@@ -9,8 +9,6 @@
 "
 " Author:  Jason White
 " License: Public Domain
-"
-" TODO: Get it working on plain-old Vim.
 
 
 " Initialization
@@ -18,12 +16,6 @@ set background=dark
 highlight clear
 if exists('syntax_on') | syntax reset | endif
 let g:colors_name = 'whitenight'
-
-if has('gui_running')
-    let s:vmode = 'gui'
-else
-    let s:vmode = 'cterm'
-endif
 
 let s:colors = {
 \   'foreground': ['#d7d0c7', 'NONE'],
@@ -81,12 +73,11 @@ function! s:hi(group, fg, ...)
         let c = get(s:colors, a:3, [a:3, a:3])
         let str .= ' guisp='. c[0]
     else
-        let str .=   ' guisp=NONE'
+        let str .= ' guisp=NONE'
     endif
 
     execute str
 endfunction
-
 
 
 " Basic highlighting
@@ -141,10 +132,10 @@ call s:hi('SpellCap'   , '' , '' , 'undercurl' , 'magenta2')
 call s:hi('SpellRare'  , '' , '' , 'undercurl' , 'blue2')
 call s:hi('SpellLocal' , '' , '' , 'undercurl' , 'yellow2')
 
-" call s:hi('Pmenu',        'base0',  'base02')
-" call s:hi('PmenuSel',     'base01', 'base2')
-" call s:hi('PmenuSbar',    'base2',  'base0')
-" call s:hi('PmenuThumb',   'base0',  'base03')
+call s:hi('Pmenu'      , 'white2' , 'black2')
+call s:hi('PmenuSel'   , 'black1' , 'blue2')
+call s:hi('PmenuSbar'  , ''       , 'black1')
+call s:hi('PmenuThumb' , ''       , 'blue1')
 
 call s:hi('TabLine'     , 'black2' , 'black1')
 call s:hi('TabLineFill' , 'white1' , 'black1')
